@@ -48,13 +48,6 @@ class BaseForecasting(ABC):
         upper_bound = np.percentile(prices, 97.5)
         mean_price = np.mean(prices)
 
-        print(f"{self.ticker} expected price for {self.noOfDays} days later is: {mean_price}")
-        print(f"{self.ticker} 95% confidence interval: ({lower_bound}, {upper_bound})\n")
 
     def plot(self):
-        self.simulation_df.plot(legend=False, alpha=0.5)
-        plt.suptitle(f'{self.__class__.__name__} Forecasting for: {self.ticker}')
-        plt.axhline(y=self.data['Close'].iloc[-1], color='r', linestyle='-')
-        plt.xlabel('Day')
-        plt.ylabel('Price')
-        plt.show()
+        pass
