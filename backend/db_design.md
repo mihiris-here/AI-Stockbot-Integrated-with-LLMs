@@ -55,19 +55,7 @@ Tracks current positions in each stock.
 
 ---
 
-#### **4. `Prices`**  
-Stores historical stock prices to calculate portfolio market value.
-
-| Column     | Type     | Description                          |
-|------------|----------|--------------------------------------|
-| price_id   | SERIAL   | Primary key                          |
-| stock_id   | INT      | Foreign key to `Stocks`              |
-| price      | DECIMAL  | Closing price                        |
-| date       | TIMESTAMP| Date the price was recorded          |
-
----
-
-#### **5. `BalanceSheet`**  
+#### **4. `BalanceSheet`**  
 Tracks available cash and estimated total asset value.
 
 | Column        | Type     | Description                                                        |
@@ -77,27 +65,4 @@ Tracks available cash and estimated total asset value.
 | total_assets  | DECIMAL  | Cash + value of current holdings (based on latest stock prices)   |
 | last_updated  | TIMESTAMP| Last time balance sheet was refreshed                              |
 
-
 ---
-
-#### **6. `InvestigationQueue`**  
-Tracks stocks that are under consideration for future trades, monitoring, or research.
-
-| Column         | Type        | Description                                                    |
-|----------------|-------------|----------------------------------------------------------------|
-| queue_id       | SERIAL      | Primary key                                                    |
-| reason         | TEXT        | Notes or reasoning for the investigation                       |
-| priority       | VARCHAR(10) | Optional flag: 'LOW', 'MEDIUM', 'HIGH'                         |
-| added_date     | TIMESTAMP   | Date the stock was added to the queue                          |
-| last_reviewed  | TIMESTAMP   | Most recent date the stock was evaluated                       |
-| action_taken   | VARCHAR(20) | 'NONE', 'WATCHING', 'BUY', 'SKIPPED', 'REMOVED'                |
-
----
-
-#### **7. `Stocks_Under_Investigation`**  
-| Column         | Type        | Description                                                    |
-|----------------|-------------|----------------------------------------------------------------|
-| queue_id       | SERIAL      | Primary key                                                    |
-| stock_id       | INT         | Foreign key to `Stocks`                                        |
-| reason         | TEXT        | Notes or reasoning for the investigation on that stock specifically|
-
