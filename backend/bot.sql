@@ -28,3 +28,14 @@ CREATE TABLE BalanceSheet (
     last_valued_assets REAL,      -- snapshot, not generated
     last_valuation_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+CREATE TABLE IF NOT EXISTS DecisionLog (
+    decision_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    stock_id INTEGER,
+    expected_price REAL,
+    current_price REAL,
+    action TEXT,                 -- BUY / SELL / HOLD
+    confidence REAL,
+    model_name TEXT,
+    strategy_name TEXT,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
